@@ -26,4 +26,4 @@ Troubleshooting:
   - ansible docs zijn niet compleet/consistent. Ik had de variabel ansible_network_resources nodig, maar die stond niet in de doc
 
 Proof of quality:
-  Zie outputbestanden
+  Zie outputbestanden (in de subfolder out, niet in backups)
