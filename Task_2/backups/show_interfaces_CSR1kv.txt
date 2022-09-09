@@ -1,0 +1,1 @@
+{"GigabitEthernet1": {"description": "VBox", "macaddress": "0800.276c.44ef", "mtu": 1500, "bandwidth": 1000000, "mediatype": "RJ45", "duplex": "Full", "lineprotocol": "up", "operstatus": "up", "type": "CSR vNIC", "ipv4": [{"address": "192.168.1.10", "subnet": "24"}]}}
