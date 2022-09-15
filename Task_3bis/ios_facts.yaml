@@ -1,0 +1,48 @@
+---
+- name: Verzamel IOS versie informatie
+  hosts: CSR1kv
+  gather_facts: false
+  connection: network_cli
+  tasks:
+    - name: Opvragen van de running config...
+      ios_command:
+        commands:
+          - show running-config
+      register: config
+    - name: Bewaren in de folder out...
+      copy:
+        content: "{{ config.stdout[0] }}"
+        dest: "out/show_running_{{ inventory_hostname }}.txt"
+    - name: Opvragen van de versie informatie poging 1...
+      ios_command:
+        commands:
+          - show version
+      register: shversion
+    - name: Bewaren in de folder out...
+      copy:
+        content: "{{ shversion.stdout[0] }}"
+        dest: "out/show_version1_{{ inventory_hostname }}.txt"
+    - name: Opvragen van de versie informatie poging 2...
+      cisco.ios.ios_facts:
+        gather_subset:
+        - all
+    - name: Bewaren in de folder out...
+      copy:
+        content: "{{ ansible_net_version }}"
+        dest: "out/show_version2_{{ inventory_hostname }}.txt"
+    - name: Informatie over L3 interfaces - poging 1...
+      copy:
+        content: "{{ ansible_net_interfaces }}"
+        dest: "out/show_interfaces1_{{ inventory_hostname }}.txt"
+    - name: Informatie over L3 interfaces - poging 2...
+      cisco.ios.ios_facts:
+        gather_subset: all
+        gather_network_resources: l3_interfaces
+    - name: Bewaren in de folder out...
+      copy:
+        content: "{{ ansible_network_resources }}"
+        dest: "out/show_interfaces2_{{ inventory_hostname }}.txt"
+    - name: Stel logging in op...
+      cisco.ios.ios_logging:
+        dest: buffered
+        size: 5100

@@ -1,0 +1,8 @@
+all:
+  hosts:
+  children:
+    webservers:
+      hosts:
+        task_3bis:
+          ansible_host: 172.18.0.12
+          ansible_user: root

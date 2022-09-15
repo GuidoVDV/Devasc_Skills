@@ -1,0 +1,2 @@
+CSR1kv ansible_network_os=cisco.ios.ios ansible_user=cisco ansible_password=cisco123! ansible_host=192.168.1.10
+webserver ansible_hosts=172.18.0.12
