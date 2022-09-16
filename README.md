@@ -27,3 +27,16 @@ Troubleshooting:
 
 Proof of quality:
   Zie outputbestanden (in de subfolder out, niet in backups)
+  
+Task 3 -- Docker
+
+Voorbereiding:
+  - Docker installeren/configureren
+  
+Implementatie:
+  - Nieuwe directory in deze repository aangemaakt met naam Task_3.
+  - Alternatieve versie komt in Task_3bis.
+  - De eerste versie werkt enkel met docker.
+    Vertrekkende van een standaard ubuntu:22.04 image wordt alles geïnstalleerd wat nodig is.
+  - De tweede versie (3bis) gebruikt docker om een ubuntu:22.04 te voorzien van een ssh server waarna de verdere config via Ansible gebeurt.
+    Hier levert Docker dus een generieke image op die verder specifiek geconfigureerd kan worden door Ansible (ssh via key).
